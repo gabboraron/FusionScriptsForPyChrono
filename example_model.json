@@ -1,0 +1,90 @@
+{
+  "model_name": "ExampleModel",
+  "bodies": [
+    {
+      "name": "Ground",
+      "is_visible": true,
+      "is_fixed": true,
+      "mass_properties": {
+        "mass": 1000.0,
+        "volume": 1000000.0,
+        "area": 60000.0,
+        "density": 0.001,
+        "center_of_mass": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "moments_of_inertia": {
+          "xx": 100.0,
+          "yy": 100.0,
+          "zz": 100.0,
+          "xy": 0.0,
+          "yz": 0.0,
+          "xz": 0.0
+        }
+      },
+      "material": {
+        "name": "Steel",
+        "id": "steel-1"
+      },
+      "geometry_file": "Ground.stl"
+    },
+    {
+      "name": "MovingBody",
+      "is_visible": true,
+      "is_fixed": false,
+      "mass_properties": {
+        "mass": 10.0,
+        "volume": 10000.0,
+        "area": 2400.0,
+        "density": 0.001,
+        "center_of_mass": {
+          "x": 0.0,
+          "y": 100.0,
+          "z": 0.0
+        },
+        "moments_of_inertia": {
+          "xx": 1.0,
+          "yy": 1.0,
+          "zz": 1.0,
+          "xy": 0.0,
+          "yz": 0.0,
+          "xz": 0.0
+        }
+      },
+      "material": {
+        "name": "Aluminum",
+        "id": "aluminum-1"
+      },
+      "geometry_file": "MovingBody.stl",
+      "transform": {
+        "translation": {
+          "x": 0.0,
+          "y": 100.0,
+          "z": 0.0
+        }
+      }
+    }
+  ],
+  "joints": [
+    {
+      "name": "RevoluteJoint1",
+      "type": "RevoluteJointType",
+      "is_suppressed": false,
+      "body_one": "Ground",
+      "body_two": "MovingBody",
+      "origin": {
+        "x": 0.0,
+        "y": 50.0,
+        "z": 0.0
+      }
+    }
+  ],
+  "materials": [],
+  "metadata": {
+    "exported_from": "Autodesk Fusion 360",
+    "export_script": "ExportToPyChrono.py",
+    "units": "mm"
+  }
+}

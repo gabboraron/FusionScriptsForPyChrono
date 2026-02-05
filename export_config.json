@@ -1,0 +1,26 @@
+{
+  "export_settings": {
+    "export_stl": true,
+    "stl_quality": "medium",
+    "export_mass_properties": true,
+    "export_joints": true,
+    "export_materials": true,
+    "unit_conversion": {
+      "from": "mm",
+      "to": "m"
+    }
+  },
+  "simulation_settings": {
+    "gravity": [
+      0,
+      -9.81,
+      0
+    ],
+    "time_step": 0.01,
+    "solver_type": "NSC",
+    "default_material": {
+      "friction": 0.5,
+      "restitution": 0.1
+    }
+  }
+}

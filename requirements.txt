@@ -1,0 +1,2 @@
+# PyChrono requirements for loading and simulating exported Fusion 360 models
+pychrono>=8.0.0
