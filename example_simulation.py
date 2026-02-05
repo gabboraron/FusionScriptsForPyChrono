@@ -13,6 +13,12 @@ Author: gabboraron
 License: MIT
 """
 
+try:
+    import pychrono as chrono
+    PYCHRONO_AVAILABLE = True
+except ImportError:
+    PYCHRONO_AVAILABLE = False
+
 from pychrono_loader import load_model_from_json, create_visualization
 
 def run_simulation(json_path, duration=5.0, time_step=0.01):
@@ -24,6 +30,9 @@ def run_simulation(json_path, duration=5.0, time_step=0.01):
         duration: Simulation duration in seconds
         time_step: Simulation time step in seconds
     """
+    if not PYCHRONO_AVAILABLE:
+        raise ImportError("PyChrono is not installed. Please install it first.")
+    
     print("Loading model from:", json_path)
     
     # Load the model
@@ -71,6 +80,9 @@ def run_headless_simulation(json_path, duration=5.0, time_step=0.01):
         duration: Simulation duration in seconds
         time_step: Simulation time step in seconds
     """
+    if not PYCHRONO_AVAILABLE:
+        raise ImportError("PyChrono is not installed. Please install it first.")
+    
     print("Loading model from:", json_path)
     
     # Load the model

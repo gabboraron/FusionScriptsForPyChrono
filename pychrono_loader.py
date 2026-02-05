@@ -133,7 +133,17 @@ def create_body_from_data(body_data, geometry_dir, system):
             
             # Load mesh for collision
             mesh = chrono.ChTriangleMeshConnected()
-            mesh.LoadWavefrontMesh(stl_path, True, True)
+            # Use appropriate method based on file extension
+            if stl_path.lower().endswith('.stl'):
+                # Note: PyChrono API may vary by version
+                # Try STL-specific loading if available
+                try:
+                    mesh.LoadSTLMesh(stl_path)
+                except AttributeError:
+                    # Fallback for older PyChrono versions or if STL method not available
+                    mesh.LoadWavefrontMesh(stl_path, True, True)
+            else:
+                mesh.LoadWavefrontMesh(stl_path, True, True)
             
             # Add mesh to collision model
             body.GetCollisionModel().AddTriangleMesh(
@@ -150,7 +160,11 @@ def create_body_from_data(body_data, geometry_dir, system):
             # Also add visual shape
             mesh_shape = chrono.ChTriangleMeshShape()
             mesh_shape.SetMesh(mesh)
-            body.AddAsset(mesh_shape)
+            # Use newer API if available, fallback to older
+            try:
+                body.AddVisualShape(mesh_shape)
+            except AttributeError:
+                body.AddAsset(mesh_shape)
     
     # Set body as fixed if needed (ground bodies)
     if body_data.get('is_fixed', False):
