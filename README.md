@@ -81,20 +81,6 @@ conda install -c projectchrono pychrono
 3. **Create PyChrono Simulation**: Use the exported data to set up a physics simulation
 4. **Analyze Results**: Run the simulation and visualize/analyze the results
 
-### Example Structure
-
-```
-FusionScriptsForPyChrono/
-├── fusion_scripts/          # Fusion 360 Python scripts
-│   ├── export_assembly.py   # Export complete assembly data
-│   └── export_joints.py     # Export joint definitions
-├── pychrono_scripts/        # PyChrono simulation scripts
-│   ├── import_model.py      # Import Fusion 360 data
-│   └── run_simulation.py    # Run physics simulation
-└── examples/                # Example projects
-    └── simple_mechanism/    # Complete example workflow
-```
-
 ## Features (Planned)
 
 - [ ] Export geometric data (meshes, primitives)
